@@ -14,4 +14,4 @@ $start_time = $chapter_list[$start_chapter - 1].start_time
 $end_time   = $chapter_list[$end_chapter - 1].end_time
 $duration   = $end_time - $start_time
 
-ffmpeg.exe -ss $start_time -i $source -t $duration $output_filename
+ffmpeg.exe -ss $start_time -i $source -vcodec nvenc_h264 -pix_fmt nv12 -rc constqp -qmin 20 -qmax 26 -t $duration $output_filename
