@@ -1,12 +1,12 @@
-﻿$source  = $args[0]
-$start_chapter = $args[1]
-if ($args.Length -eq 2) {
+$source  = $args[0]
+$output_filename = $args[1]
+
+$start_chapter = $args[2]
+if ($args.Length -eq 3) {
     $end_chapter = $start_chapter
 } else {
-    $end_chapter = $args[2]
+    $end_chapter = $args[3]
 }
-
-$output_filename = (Read-Host "Please enter output file name") + ".mp4"
 
 $chapter_list = (ffprobe.exe -print_format json -show_chapters $source | ConvertFrom-Json)[0].chapters
 
